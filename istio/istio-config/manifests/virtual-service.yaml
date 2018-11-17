@@ -69,9 +69,7 @@ spec:
     - destination:
         host: frontend.playground.svc.cluster.local
         subset: v1-canary
-      weight: 10
   - route:
     - destination:
         host: frontend.playground.svc.cluster.local
         subset: v1
-      weight: 90
