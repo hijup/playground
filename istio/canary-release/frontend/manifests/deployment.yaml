@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: playground
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,6 +14,26 @@ spec:
       containers:
       - name: frontend
         image: gcr.io/hijup-prod/github-hijup-playground-istio-canary-release-frontend:master
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend-canary
+  namespace: playground
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v1-canary
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/hijup-prod/github-hijup-playground-istio-canary-release-frontend:canary
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
