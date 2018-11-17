@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: playground
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v1
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/hijup-prod/github-hijup-playground-istio-frontend:master
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend-canary
+  namespace: playground
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v1-canary
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/hijup-prod/github-hijup-playground-istio-frontend:canary
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
