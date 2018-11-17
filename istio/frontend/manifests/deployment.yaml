@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gcr.io/hijup-prod/github-hijup-playground-istio-canary-release-frontend:master
+        image: gcr.io/hijup-prod/github-hijup-playground-istio-frontend:master
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gcr.io/hijup-prod/github-hijup-playground-istio-canary-release-frontend:canary
+        image: gcr.io/hijup-prod/github-hijup-playground-istio-frontend:canary
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
